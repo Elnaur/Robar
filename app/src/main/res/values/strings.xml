@@ -4,4 +4,7 @@
     <string name="order">Order</string>
     <string name="info">Info</string>
     <string name="robar">Robar</string>
+    <string name="amount">0</string>
+    <string name="add">+</string>
+    <string name="remove">-</string>
 </resources>

@@ -3,15 +3,31 @@ package com.helloworld.robar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
     // Array of order names
-    String[] orderArray = {"Order 1", "Order 2", "Order 3", "Order 4", "Order 5", "Order 6", "Order 7"};
+    String[] orderArray = {"Tropicano",
+            "Guava Crush",
+            "Magenta Galaxy",
+            "Sunset Elixir",
+            "Sparkling Sunrise",
+            "Ginger Revenge",
+            "Fruit Splash"};
 
     // Array of information about the orders
-    String [] infoArray = {"Order 1 info", "Order 2 info", "Order 3 info", "Order 4 info", "Order 5 info", "Order 6 info", "Order 7 info"};
+    String [] infoArray = {"Apple juice \nOrange juice \nGuava juice",
+            "Apple juice \nGuava juice \nGrenadine",
+            "Grenadine \nFruit base \nApple juice",
+            "Apple juice \nGrenadine \nFruit base \nGuava juice",
+            "Apple juice \nFruit base \nGinger ale",
+            "Fruit base \nGrenadine \nGinger ale",
+            "Apple juice \nOrange juice \nGuava juice \nFruit base"};
 
     // Array of images to go with each order
     Integer[] imgArray = {R.drawable.drink1,
@@ -29,10 +45,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListAdapter orderListAdapter = new ListAdapter (this, orderArray, infoArray, imgArray);
+        Globals.prevPos = -1;
+
+        final ListAdapter orderListAdapter = new ListAdapter (this, orderArray, infoArray, imgArray);
 
         listView = (ListView) findViewById(R.id.lvOrders);
         listView.setAdapter(orderListAdapter);
+        /*
+        listView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,  int position, long id){
+                LinearLayout infoLayout = (LinearLayout) findViewById(R.id.pnlInfo);
+
+                infoLayout.setVisibility(infoLayout.VISIBLE);
+
+                if (Globals.prevPos > -1) {
+
+                    infoLayout.setVisibility(orderListAdapter.getItem(Globals.prevPos).GONE);
+                }
+
+                Globals.prevPos = position;
+            }
+        }); */
     }
 
 }

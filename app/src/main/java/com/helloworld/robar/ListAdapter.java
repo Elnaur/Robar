@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +42,29 @@ public class ListAdapter extends ArrayAdapter {
         TextView orderTextField = (TextView) rowView.findViewById(R.id.txtOrder);
         TextView infoTextField = (TextView) rowView.findViewById(R.id.txtOrderInfo);
         ImageView imgView = (ImageView) rowView.findViewById(R.id.imgOrder);
+
+        final TextView amountTextField = (TextView) rowView.findViewById(R.id.txtAmount);
+        Button addButton = (Button) rowView.findViewById(R.id.btnAdd);
+        Button removeButton = (Button) rowView.findViewById(R.id.btnRemove);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int num = Integer.parseInt(amountTextField.getText().toString());
+                num++;
+                amountTextField.setText(Integer.toString(num));
+            }
+        });
+
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int num = Integer.parseInt(amountTextField.getText().toString());
+                num--;
+                amountTextField.setText(Integer.toString(num));
+            }
+        });
+
 
         // Sets values of objects to values of arrays
         orderTextField.setText(orderArray[position]);
