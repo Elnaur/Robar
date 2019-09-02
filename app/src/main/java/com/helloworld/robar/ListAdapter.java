@@ -25,46 +25,69 @@ public class ListAdapter extends ArrayAdapter {
     // To store the info appearing underneath each order
     private final String[] infoArray;
 
+    // Amount of drinks ordered
+    private final int[] amountArray;
+
+    private int totalAmount;
+
     // Constructor
-    public ListAdapter (Activity context, String[] orderArrayParam, String[] infoArrayParam, Integer[] imgArrayParam) {
+    public ListAdapter (Activity context, String[] orderArrayParam, String[] infoArrayParam, Integer[] imgArrayParam, int[] amountArrayParam) {
         super (context, R.layout.listview_row, orderArrayParam);
         this.context = context;
         this.imgArray = imgArrayParam;
         this.orderArray = orderArrayParam;
         this.infoArray = infoArrayParam;
+        this.amountArray = amountArrayParam;
+
     }
 
-    public View getView (int position, View view, ViewGroup parent) {
+    public View getView (final int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.listview_row, null, true);
+        final View rowView = inflater.inflate(R.layout.listview_row, null, true);
 
         // gets references to objects in the listview_row.xml file
-        TextView orderTextField = (TextView) rowView.findViewById(R.id.txtOrder);
-        TextView infoTextField = (TextView) rowView.findViewById(R.id.txtOrderInfo);
-        ImageView imgView = (ImageView) rowView.findViewById(R.id.imgOrder);
+        TextView orderTextField = rowView.findViewById(R.id.txtOrder);
+        TextView infoTextField = rowView.findViewById(R.id.txtOrderInfo);
+        ImageView imgView = rowView.findViewById(R.id.imgOrder);
 
-        final TextView amountTextField = (TextView) rowView.findViewById(R.id.txtAmount);
-        Button addButton = (Button) rowView.findViewById(R.id.btnAdd);
-        Button removeButton = (Button) rowView.findViewById(R.id.btnRemove);
+        final TextView amountTextField = rowView.findViewById(R.id.txtAmount);
+        amountTextField.setText(Integer.toString(amountArray[position]));
+
+        final Button addButton = rowView.findViewById(R.id.btnAdd);
+        final Button removeButton = rowView.findViewById(R.id.btnRemove);
+
+        addButton.setEnabled(totalAmount < 6);
+        removeButton.setEnabled(amountArray[position] > 0);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int num = Integer.parseInt(amountTextField.getText().toString());
-                num++;
-                amountTextField.setText(Integer.toString(num));
+                if (totalAmount + 1 == 6) {
+                    notifyDataSetChanged();
+                }
+                if (amountArray[position] == 0) {
+                    removeButton.setEnabled(true);
+                }
+                totalAmount++;
+                amountArray[position]++;
+                amountTextField.setText(Integer.toString(amountArray[position]));
             }
         });
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int num = Integer.parseInt(amountTextField.getText().toString());
-                num--;
-                amountTextField.setText(Integer.toString(num));
+                if (totalAmount == 6) {
+                    notifyDataSetChanged();
+                }
+                if (amountArray[position] - 1 == 0) {
+                    removeButton.setEnabled(false);
+                }
+                totalAmount--;
+                amountArray[position]--;
+                amountTextField.setText(Integer.toString(amountArray[position]));
             }
         });
-
 
         // Sets values of objects to values of arrays
         orderTextField.setText(orderArray[position]);

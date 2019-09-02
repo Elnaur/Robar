@@ -61,6 +61,7 @@
                 android:id="@+id/btnRemove"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
+                android:enabled="false"
                 android:focusable="false"
                 android:text="@string/remove"
                 android:textSize="24sp"

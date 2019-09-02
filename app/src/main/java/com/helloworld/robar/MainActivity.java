@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.drink6,
             R.drawable.drink7};
 
+    int[] amountArray = new int[imgArray.length];
+
     ListView listView;
 
     @Override
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         Globals.prevPos = -1;
 
-        final ListAdapter orderListAdapter = new ListAdapter (this, orderArray, infoArray, imgArray);
+        final ListAdapter orderListAdapter = new ListAdapter (this, orderArray, infoArray, imgArray, amountArray);
 
         listView = (ListView) findViewById(R.id.lvOrders);
         listView.setAdapter(orderListAdapter);
