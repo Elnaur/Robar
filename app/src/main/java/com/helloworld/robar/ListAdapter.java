@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ListAdapter extends ArrayAdapter {
@@ -38,7 +39,6 @@ public class ListAdapter extends ArrayAdapter {
         this.orderArray = orderArrayParam;
         this.infoArray = infoArrayParam;
         this.amountArray = amountArrayParam;
-
     }
 
     public View getView (final int position, View view, ViewGroup parent) {
@@ -56,8 +56,12 @@ public class ListAdapter extends ArrayAdapter {
         final Button addButton = rowView.findViewById(R.id.btnAdd);
         final Button removeButton = rowView.findViewById(R.id.btnRemove);
 
+        final LinearLayout infoLayout = rowView.findViewById(R.id.pnlInfo);
+
         addButton.setEnabled(totalAmount < 6);
         removeButton.setEnabled(amountArray[position] > 0);
+
+        infoLayout.setVisibility(infoLayout.GONE);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

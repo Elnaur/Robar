@@ -11,26 +11,27 @@
     <LinearLayout
         android:id="@+id/pnlOrder"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1.5"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="86dp"
+            android:layout_width="71dp"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgOrder"
-                android:layout_width="86dp"
+                android:layout_width="59dp"
                 android:layout_height="107dp"
                 android:layout_gravity="start"
                 android:layout_weight="1"
+                android:adjustViewBounds="false"
                 android:contentDescription="@string/order"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/drink1" />
+                app:srcCompat="@drawable/tropicano1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -47,6 +48,17 @@
                 android:text="@string/order"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtOrderInfo"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="@string/info"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
 
@@ -105,23 +117,11 @@
         android:layout_height="70dp"
         android:background="#E9E9E9"
         android:orientation="horizontal"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp">
-
-            <TextView
-                android:id="@+id/txtOrderInfo"
-                android:layout_width="187dp"
-                android:layout_height="53dp"
-                android:text="@string/info"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="67dp"/>
 
     </LinearLayout>
 
