@@ -9,12 +9,13 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tlbrBottom"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="410dp"
+        android:layout_height="103dp"
         android:background="?attr/colorPrimary"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
@@ -24,20 +25,22 @@
         android:listSelector="#FFABAB"
         app:layout_constraintBottom_toTopOf="@+id/tlbrBottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlbrTop" />
+        app:layout_constraintTop_toBottomOf="@+id/tlbrTop"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnSubmit"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="98dp"
-        android:layout_height="50dp"
+        android:layout_width="128dp"
+        android:layout_height="68dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/submit"
         android:textColor="#555555"
         android:textColorLink="#FFB6B6"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tlbrBottom"
@@ -66,5 +69,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tlbrTop"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnConnect"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="110dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Connect"
+        android:textColor="#555555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tlbrBottom" />
+
+    <Button
+        android:id="@+id/btnDisconnect"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="Disconnect"
+        android:textColor="#555555"
+        app:layout_constraintBottom_toBottomOf="@+id/tlbrBottom"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

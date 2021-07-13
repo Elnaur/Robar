@@ -61,8 +61,6 @@ public class ListAdapter extends ArrayAdapter {
         addButton.setEnabled(totalAmount < 6);
         removeButton.setEnabled(amountArray[position] > 0);
 
-        infoLayout.setVisibility(infoLayout.GONE);
-
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
